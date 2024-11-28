@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 19:26:59 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/11/28 20:00:49 by ecoelho-         ###   ########.fr       */
+/*   Created: 2024/11/28 20:01:44 by ecoelho-          #+#    #+#             */
+/*   Updated: 2024/11/28 20:02:58 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int main(int argc, char **argv) {
-  if (argc != 6 && argc != 5) {
-    printf("The number of args is not valid");
-    exit(1);
-  }
-  check_args(argc, argv);
+int ft_atoi(const char *nptr) {
+  int sign;
+  int base;
+  int i;
 
-  return (0);
+  sign = 1;
+  base = 0;
+  i = 0;
+  while ((nptr[i] >= '\t' && nptr[i] <= '\r') || nptr[i] == ' ') {
+    i++;
+  }
+  if (nptr[i] == '-' || nptr[i] == '+') {
+    sign = 1 - 2 * (nptr[i++] == '-');
+  }
+  while (nptr[i] >= '0' && nptr[i] <= '9') {
+    base = base * 10 + (nptr[i] - '0');
+    i++;
+  }
+  return (sign * base);
 }

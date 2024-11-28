@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 19:26:59 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/11/28 20:00:49 by ecoelho-         ###   ########.fr       */
+/*   Created: 2024/11/28 19:58:53 by ecoelho-          #+#    #+#             */
+/*   Updated: 2024/11/28 20:05:21 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include <pthread.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-int main(int argc, char **argv) {
-  if (argc != 6 && argc != 5) {
-    printf("The number of args is not valid");
-    exit(1);
-  }
-  check_args(argc, argv);
+#ifndef PHILO_H
+#define PHILO_H
 
-  return (0);
-}
+int check_args(int argc, char **argv);
+int ft_atoi(const char *nptr);
+
+
+#endif
