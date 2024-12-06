@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 19:57:59 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/11/28 20:04:14 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:55:18 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int check_args(int argc, char **argv) {
     has_arg_digit(argv[i++]);
   }
 
-  if (ft_atoi(argv[1]) > 200 || ft_atoi(argv[1]) <= 0) {
-    printf("Number of philos: MIN = 1 and MAX = 200\n");
+  if (ft_atoi(argv[1]) <= 0) {
+    printf("Number of philos: MIN = 1\n");
     exit(1);
   }
   if (ft_atoi(argv[2]) <= 0 || ft_atoi(argv[3]) <= 0 || ft_atoi(argv[4]) <= 0) {

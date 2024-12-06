@@ -32,3 +32,11 @@ int ft_atoi(const char *nptr) {
   }
   return (sign * base);
 }
+
+size_t get_current_time(void) {
+  struct timeval time;
+
+  if (gettimeofday(&time, NULL) == -1)
+    printf("Error to get current time");
+  return (time.tv_sec * 1000 + time.tv_sec / 1000);
+}

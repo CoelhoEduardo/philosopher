@@ -6,16 +6,17 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 19:58:53 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/11/28 20:32:27 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/06 19:57:39 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef PHILO_H
+#define PHILO_H
 
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-#ifndef PHILO_H
-#define PHILO_H
+#include <sys/time.h>
 
 typedef struct s_philo {
   pthread_t thread;
@@ -47,5 +48,11 @@ typedef struct s_program {
 
 int check_args(int argc, char **argv);
 int ft_atoi(const char *nptr);
+size_t get_current_time(void);
+
+void init_program(t_program *program, t_philo *philos);
+void init_forks(pthread_mutex_t *forks, int philo_num);
+void init_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks,
+                 char **argv);
 
 #endif
