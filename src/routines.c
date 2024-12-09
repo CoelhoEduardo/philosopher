@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:08:55 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/09 11:38:34 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:49:03 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,20 @@ void	is_eat(t_philo *philo)
 	philo->eating = 0;
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
+}
+
+void	routines(void *pointer)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)pointer;
+	if (philo->id % 2 == 0)
+		ft_usleep(1);
+	while (!dead_loop(philo))
+	{
+		is_eat(philo);
+		is_sleep(philo);
+		is_think(philo);
+	}
+	return (pointer);
 }
