@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:08:55 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/09 11:21:02 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:26:18 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,10 @@ int	dead_loop(t_philo *philo)
 void	is_think(t_philo *philo)
 {
 	get_status("is thinking", philo, philo->id);
+}
+
+void is_sleep(t_philo *philo)
+{
+    get_status("is sleeping", philo, philo->id);
+    ft_usleep(philo->time_to_sleep);
 }
