@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 20:01:44 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/12 01:09:04 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:34:25 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ size_t	get_current_time(void)
 
 	if (gettimeofday(&time, NULL) == -1)
 		printf("Error to get current time\n");
-	return (time.tv_sec * 1000 + time.tv_sec / 1000);
+	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }
 
 int	ft_usleep(size_t milliseconds)

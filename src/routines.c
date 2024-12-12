@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:08:55 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/12 01:09:22 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:30:34 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void *routines(void *pointer) {
   t_philo *philo;
 
   philo = (t_philo *)pointer;
-  printf("entry hear\n");
   if (philo->id % 2 == 0)
     ft_usleep(1);
   while (!dead_loop(philo)) {
