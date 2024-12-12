@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 19:54:09 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/11 19:41:02 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/12 01:01:39 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,4 @@ void init_program(t_program *program, t_philo *philos) {
   pthread_mutex_init(&program->write_lock, NULL);
   pthread_mutex_init(&program->meal_lock, NULL);
   pthread_mutex_init(&program->dead_lock, NULL);
-}
-
-void table(t_program program, t_philo *philos, pthread_mutex_t *forks,
-           char **argv) {
-
-  init_program(&program, philos);
-  init_forks(forks, ft_atoi(argv[1]));
-  init_philos(philos, &program, forks, argv);
 }

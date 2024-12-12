@@ -6,7 +6,7 @@
 #    By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/11 19:54:27 by ecoelho-          #+#    #+#              #
-#    Updated: 2024/12/11 20:34:49 by ecoelho-         ###   ########.fr        #
+#    Updated: 2024/12/12 00:38:00 by ecoelho-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,13 +15,13 @@ NAME=philo
 SRC_PATH=./src/
 
 SRCS=main.c check_args.c init.c routines.c \
-	threads.c utils.c aux.c \
+	threads.c monitor.c utils.c aux.c \
 
 OBJ=$(addprefix $(SRC_PATH), $(SRCS:.c=.o))
 
 CC=cc
 
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror -g3
 
 all: $(NAME)
 

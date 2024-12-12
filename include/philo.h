@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 19:58:53 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/11 19:41:37 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/11 21:51:03 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void table(t_program program, t_philo *philos, pthread_mutex_t *forks,
            char **argv);
 void *routines(void *pointer);
 int thread(t_program *program);
-
+void *monitor(void *pointer);
 
 int dead_loop(t_philo *philo);
 void get_status(char *str, t_philo *philo, int id);

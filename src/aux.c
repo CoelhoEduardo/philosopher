@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:15:05 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/11 19:15:50 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/12 01:06:03 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void get_status(char *str, t_philo *philo, int id) {
   pthread_mutex_lock(philo->write_lock);
   time = get_current_time() - philo->start_time;
   if (!dead_loop(philo))
-    printf("%zu %d %s\n", time, id, str);
+    printf("%zu %d %s \n", time, id, str);
   pthread_mutex_unlock(philo->write_lock);
 }
