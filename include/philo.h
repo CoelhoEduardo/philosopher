@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ecoelho- <ecoelho-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 19:58:53 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/09 11:05:17 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:41:37 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,13 @@ void init_program(t_program *program, t_philo *philos);
 void init_forks(pthread_mutex_t *forks, int philo_num);
 void init_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks,
                  char **argv);
-void	table(char **argv);
+void table(t_program program, t_philo *philos, pthread_mutex_t *forks,
+           char **argv);
+void *routines(void *pointer);
+int thread(t_program *program);
+
+
+int dead_loop(t_philo *philo);
+void get_status(char *str, t_philo *philo, int id);
 
 #endif
