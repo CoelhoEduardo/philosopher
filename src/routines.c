@@ -6,20 +6,22 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:08:55 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/12 10:30:34 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:59:49 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void is_think(t_philo *philo) { get_status("is thinking", philo, philo->id); }
+static void think(t_philo *philo) {
+  get_status("is thinking", philo, philo->id);
+}
 
-void is_sleep(t_philo *philo) {
+static void nap(t_philo *philo) {
   get_status("is sleeping", philo, philo->id);
   ft_usleep(philo->time_to_sleep);
 }
 
-void is_eat(t_philo *philo) {
+static void eat(t_philo *philo) {
   pthread_mutex_lock(philo->right_fork);
   get_status("has taken a fork", philo, philo->id);
   if (philo->num_of_philos == 1) {
@@ -48,9 +50,9 @@ void *routines(void *pointer) {
   if (philo->id % 2 == 0)
     ft_usleep(1);
   while (!dead_loop(philo)) {
-    is_eat(philo);
-    is_sleep(philo);
-    is_think(philo);
+    eat(philo);
+    nap(philo);
+    think(philo);
   }
   return (pointer);
 }

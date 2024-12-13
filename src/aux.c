@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 19:15:05 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/12 01:06:03 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/13 13:54:23 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,22 @@ void get_status(char *str, t_philo *philo, int id) {
   if (!dead_loop(philo))
     printf("%zu %d %s \n", time, id, str);
   pthread_mutex_unlock(philo->write_lock);
+}
+
+void  free_and_destroy(t_program  program, t_philo *philos, pthread_mutex_t *forks)
+{
+  int i;
+
+  i = 0;
+  pthread_mutex_destroy(&program.write_lock);
+  pthread_mutex_destroy(&program.dead_lock);
+  pthread_mutex_destroy(&program.meal_lock);
+
+  while (i < program.philos[0].num_of_philos) {
+    pthread_mutex_destroy(&forks[i]);
+    i++;
+  }
+
+  free(philos);
+  free(forks);
 }

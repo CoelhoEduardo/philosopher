@@ -6,7 +6,7 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 19:58:53 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/11 21:51:03 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:19:24 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 typedef struct s_philo {
   pthread_t thread;
@@ -52,15 +53,15 @@ int ft_atoi(const char *nptr);
 size_t get_current_time(void);
 int ft_usleep(size_t milliseconds);
 
-void init_program(t_program *program, t_philo *philos);
-void init_forks(pthread_mutex_t *forks, int philo_num);
-void init_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks,
+void get_forks(pthread_mutex_t *forks, int philo_num);
+void entry_philos(t_philo *philos, t_program *program, pthread_mutex_t *forks,
                  char **argv);
-void table(t_program program, t_philo *philos, pthread_mutex_t *forks,
-           char **argv);
+
 void *routines(void *pointer);
 int thread(t_program *program);
 void *monitor(void *pointer);
+
+void  free_and_destroy(t_program  program, t_philo *philos, pthread_mutex_t *forks);
 
 int dead_loop(t_philo *philo);
 void get_status(char *str, t_philo *philo, int id);

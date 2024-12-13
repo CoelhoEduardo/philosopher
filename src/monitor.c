@@ -6,13 +6,13 @@
 /*   By: ecoelho- <ecoelho-@student.42>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 21:33:46 by ecoelho-          #+#    #+#             */
-/*   Updated: 2024/12/12 10:51:32 by ecoelho-         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:17:05 by ecoelho-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int philo_is_dead(t_philo *philo, size_t time_to_die) {
+bool philo_is_dead(t_philo *philo, size_t time_to_die) {
   pthread_mutex_lock(philo->meal_lock);
   if (get_current_time() - philo->last_meal >= time_to_die &&
       philo->eating == 0) {
@@ -20,10 +20,10 @@ int philo_is_dead(t_philo *philo, size_t time_to_die) {
   }
   pthread_mutex_unlock(philo->meal_lock);
 
-  return (0);
+  return (false);
 }
 
-int is_dead(t_philo *philos) {
+bool is_dead(t_philo *philos) {
   int i;
 
   i = 0;
@@ -33,15 +33,15 @@ int is_dead(t_philo *philos) {
       pthread_mutex_lock(philos[0].dead_lock);
       *philos->dead = 1;
       pthread_mutex_unlock(philos[0].dead_lock);
-      return (1);
+      return (true);
     }
     i++;
   }
 
-  return (0);
+  return (false);
 }
 
-int check_if_all_ate(t_philo *philos) {
+bool all_ate(t_philo *philos) {
   int i;
   int finish_eating;
 
@@ -60,17 +60,17 @@ int check_if_all_ate(t_philo *philos) {
     pthread_mutex_lock(philos[0].dead_lock);
     *philos->dead = 1;
     pthread_mutex_unlock(philos[0].dead_lock);
-    return (1);
+    return (true);
   }
-  return (0);
+  return (false);
 }
 
 void *monitor(void *pointer) {
   t_philo *philos;
 
   philos = (t_philo *)pointer;
-  while (1) {
-    if (is_dead(philos) == 1 || check_if_all_ate(philos) == 1)
+  while (true) {
+    if (is_dead(philos) == true || all_ate(philos) == true)
       break;
   }
   return (pointer);
